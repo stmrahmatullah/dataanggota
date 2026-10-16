@@ -2,29 +2,161 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STM RAHMATULLAH</title>
-    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIiO9BHKIZIlmSZ_RcTdCpAvkP9PQvSNz1RVunJ8oTtuWW0psq5qFLk2me15ehW5znanWqlHHA2EmgBiA2PTamtox11NU1DR6I8CuQPCXfNOC-zhn0K2J6_w8s3iLfnYgXAR2owmybY481lX2xq8EDRRd99GMTZWnSpvCCmkkXyaWetsZBvmWJD9-S8HL4/s320/STM.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>STM Rahmatullah</title>
+    <meta name="theme-color" content="#17463a">
+
+    <!-- Ikon tab browser (ganti dengan logo STM Rahmatullah jika ada) -->
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpJW9I9kygFde0tcluF66frz5cxRzG2O59ttSwz4mLYS9no7BCAYi6TzAPibwGbvssvgs_MDLoMfKQ0OnOjCeWh_uz4nRDRoGy1_wtZz7hZnlGrbHjbIy6V4JYq3jBKlb5k5Lm8e4u2Gu4ByBOZ66-RMTt55T6DK982YlgdF_eZHMfsooK6AA7Vwt13vu/s320/Logo.png">
+
     <style>
-        html, body { margin: 0; height: 100%; background: #f8fafc; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-        .wrap { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; box-sizing: border-box; text-align: center; }
-        img { width: 88px; height: 88px; object-fit: contain; }
-        h1 { margin: 0; font-size: 20px; color: #0f172a; }
-        p { margin: 0; font-size: 13px; color: #64748b; }
-        a { display: inline-block; margin-top: 4px; padding: 10px 22px; border-radius: 10px; background: #2563eb; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #eef3f1; /* sama dengan --mist di aplikasi */
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* Geser iframe 3px ke atas untuk menyembunyikan garis/banner Google di tepi atas */
+        .iframe-container {
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 100%;
+            height: calc(100% + 3px);
+        }
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== LAYAR LOADING ===== */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 24px;
+            box-sizing: border-box;
+            background-color: #eef3f1;
+            transition: opacity .5s ease, visibility .5s ease;
+        }
+        #loader.hide { opacity: 0; visibility: hidden; }
+        #loader img {
+            width: 88px; height: 88px; object-fit: contain;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        #loader h1 {
+            margin: 0; font-size: 20px; font-weight: 700;
+            color: #14221d; letter-spacing: .5px; text-align: center;
+        }
+        #loader p {
+            margin: 0; font-size: 13px; color: #5d6f68;
+            text-align: center; min-height: 1.3em;
+        }
+        #loader a { color: #17463a; font-weight: 700; }
+        .bar { width: min(280px, 80vw); height: 8px; background: #d6e0dc; border-radius: 999px; overflow: hidden; }
+        .bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #17463a, #b8923a); border-radius: 999px; transition: width .25s ease-out; }
+        #percent { font-size: 13px; font-weight: 600; color: #17463a; font-variant-numeric: tabular-nums; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.06); opacity: .85; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #loader img { animation: none; }
+            .bar-fill, #loader { transition: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIiO9BHKIZIlmSZ_RcTdCpAvkP9PQvSNz1RVunJ8oTtuWW0psq5qFLk2me15ehW5znanWqlHHA2EmgBiA2PTamtox11NU1DR6I8CuQPCXfNOC-zhn0K2J6_w8s3iLfnYgXAR2owmybY481lX2xq8EDRRd99GMTZWnSpvCCmkkXyaWetsZBvmWJD9-S8HL4/s320/STM.png" alt="Logo STM Rahmatullah">
+
+    <!-- Layar loading -->
+    <div id="loader" role="status" aria-live="polite">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpJW9I9kygFde0tcluF66frz5cxRzG2O59ttSwz4mLYS9no7BCAYi6TzAPibwGbvssvgs_MDLoMfKQ0OnOjCeWh_uz4nRDRoGy1_wtZz7hZnlGrbHjbIy6V4JYq3jBKlb5k5Lm8e4u2Gu4ByBOZ66-RMTt55T6DK982YlgdF_eZHMfsooK6AA7Vwt13vu/s320/Logo.png" alt="Logo STM Rahmatullah">
         <h1>STM RAHMATULLAH</h1>
-        <p>Membuka aplikasi...</p>
-        <a id="go" href="https://script.google.com/macros/s/AKfycbxgzStOdHoo7HDAkAMGceYaXHzru8NSMLawYpRFV9g2q_ks1NL09rGqhm1g1OgaSDQ/exec">Buka Aplikasi</a>
+        <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+        <span id="percent">0%</span>
+        <p id="statusText">Menyiapkan aplikasi...</p>
     </div>
+
+    <div class="iframe-container">
+        <!--
+            GANTI src di bawah dengan URL Web App Anda (yang berakhiran /exec).
+            Cara dapat: Apps Script > Deploy > Manage deployments > salin "Web app URL".
+
+            Syarat agar bisa tampil di iframe:
+            1. Deploy sebagai Web app:  Execute as = Me,  Who has access = Anyone.
+            2. Code.js memakai setXFrameOptionsMode(ALLOWALL) (sudah ada di file Code.js).
+            3. Jangan pasang atribut sandbox di iframe ini.
+        -->
+        <iframe
+            id="appFrame"
+            title="Aplikasi STM Rahmatullah"
+            src="https://script.google.com/macros/s/AKfycbxgzStOdHoo7HDAkAMGceYaXHzru8NSMLawYpRFV9g2q_ks1NL09rGqhm1g1OgaSDQ/exec"
+            allow="fullscreen *; clipboard-write *; clipboard-read *"
+            allowfullscreen></iframe>
+    </div>
+
     <script>
-        setTimeout(function () {
-            window.location.replace(document.getElementById('go').href);
-        }, 800);
+        (function () {
+            var APP_URL = document.getElementById('appFrame').getAttribute('src');
+            var loader = document.getElementById('loader');
+            var fill = document.getElementById('barFill');
+            var percentEl = document.getElementById('percent');
+            var statusEl = document.getElementById('statusText');
+            var frame = document.getElementById('appFrame');
+
+            var progress = 0, done = false;
+
+            function render() {
+                var p = Math.floor(progress);
+                fill.style.width = p + '%';
+                percentEl.textContent = p + '%';
+                if (p < 30) statusEl.textContent = 'Menyiapkan aplikasi...';
+                else if (p < 70) statusEl.textContent = 'Menghubungkan ke server...';
+                else if (p < 100) statusEl.textContent = 'Memuat data...';
+                else statusEl.textContent = 'Selesai!';
+            }
+
+            // Progress simulasi (iframe tidak punya progress asli)
+            var timer = setInterval(function () {
+                if (done) return;
+                progress += (90 - progress) * 0.04 + 0.15;
+                if (progress > 90) progress = 90;
+                render();
+            }, 120);
+
+            function finish() {
+                if (done) return;
+                done = true;
+                clearInterval(timer);
+                progress = 100;
+                render();
+                setTimeout(function () {
+                    loader.classList.add('hide');
+                    setTimeout(function () { loader.remove(); }, 600);
+                }, 350);
+            }
+
+            frame.addEventListener('load', finish);
+
+            // Pengaman: jika load tidak terpicu dalam 20 detik, tutup loader
+            // dan tampilkan tautan cadangan untuk membuka aplikasi di tab baru.
+            setTimeout(function () {
+                if (done) return;
+                statusEl.innerHTML = 'Lama memuat? <a href="' + APP_URL + '" target="_blank" rel="noopener">Buka di tab baru</a>';
+                clearInterval(timer);
+                setTimeout(finish, 6000);
+            }, 20000);
+        })();
     </script>
 </body>
 </html>
