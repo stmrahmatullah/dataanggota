@@ -1,0 +1,15 @@
+{
+  "name": "STM Rahmatullah",
+  "short_name": "STM",
+  "description": "Aplikasi data anggota STM Rahmatullah",
+  "lang": "id",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef3f1",
+  "theme_color": "#17463a",
+  "icons": [
+    { "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIiO9BHKIZIlmSZ_RcTdCpAvkP9PQvSNz1RVunJ8oTtuWW0psq5qFLk2me15ehW5znanWqlHHA2EmgBiA2PTamtox11NU1DR6I8CuQPCXfNOC-zhn0K2J6_w8s3iLfnYgXAR2owmybY481lX2xq8EDRRd99GMTZWnSpvCCmkkXyaWetsZBvmWJD9-S8HL4/s192/STM.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIiO9BHKIZIlmSZ_RcTdCpAvkP9PQvSNz1RVunJ8oTtuWW0psq5qFLk2me15ehW5znanWqlHHA2EmgBiA2PTamtox11NU1DR6I8CuQPCXfNOC-zhn0K2J6_w8s3iLfnYgXAR2owmybY481lX2xq8EDRRd99GMTZWnSpvCCmkkXyaWetsZBvmWJD9-S8HL4/s512/STM.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
